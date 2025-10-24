@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarejestruj się w sklepie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f8fc;
+            margin: 40px;
+        }
+
+        .container {
+            width: 480px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        h2 {
+            background-color: #007acc;
+            color: white;
+            margin: 0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: #e6f2ff;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            border-right: 1px solid #cce0ff;
+            transition: background 0.3s;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab.active {
+            background-color: #007acc;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tab:hover {
+            background-color: #cce6ff;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        /* Ukrycie nieaktywnych zakładek */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Zarejestruj się w sklepie</h2>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="oferta">Oferta</div>
+            <div class="tab" data-tab="adres">Adres</div>
+            <div class="tab" data-tab="kontakt">Kontakt</div>
+        </div>
+
+        <div class="content">
+            <div id="oferta" class="tab-content active">
+                <form>
+                    <label>Nazwa użytkownika:</label>
+                    <input type="text" placeholder="Wpisz nazwę użytkownika">
+                    
+                    <label>Hasło:</label>
+                    <input type="password" placeholder="Wpisz hasło">
+                    
+                    <button type="button">Dalej</button>
+                </form>
+            </div>
+
+            <div id="adres" class="tab-content">
+                <form>
+                    <label>Ulica i numer:</label>
+                    <input type="text" placeholder="np. Lipowa 12">
+                    
+                    <label>Kod pocztowy i miasto:</label>
+                    <input type="text" placeholder="np. 00-001 Warszawa">
+                    
+                    <button type="button">Dalej</button>
+                </form>
+            </div>
+
+            <div id="kontakt" class="tab-content">
+                <form>
+                    <label>Adres e-mail:</label>
+                    <input type="email" placeholder="np. jan@domena.pl">
+                    
+                    <label>Telefon:</label>
+                    <input type="text" placeholder="np. 123 456 789">
+                    
+                    <button type="submit">Zarejestruj się</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Deaktywacja wszystkich
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Aktywacja klikniętej
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
