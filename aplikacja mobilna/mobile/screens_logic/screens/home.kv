@@ -1,0 +1,19 @@
+<HomeScreen>:
+    name: "home"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: "Witaj w aplikacji!"
+            font_size: 40
+            size_hint_y: 0.3
+
+        Button:
+            text: "Przejdź na drugi ekran"
+            font_size: 24
+            size_hint_y: 0.2
+            on_release:
+                app.root.current = "second"
